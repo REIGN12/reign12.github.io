@@ -103,3 +103,7 @@ theme: fluid
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: ''
+
+about:
+  name: Jingcheng Hu
+  intro: See you there
