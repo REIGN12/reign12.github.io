@@ -24,10 +24,7 @@ jobs:
     - name: Install dependencies & Generate static files
       run: |
         node -v
-        npm un hexo-renderer-marked --save
-        npm un hexo-renderer-kramed --save
         npm i hexo-cli --location=global
-        npm i --save hexo-theme-fluid
         npm i
         hexo clean
         hexo g
