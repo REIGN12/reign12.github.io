@@ -114,3 +114,9 @@ post:
     enable: true
     specific: false
     engine: mathjax
+
+
+index:
+  slogan:
+    enable: true
+    text: 小马过河
