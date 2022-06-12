@@ -36,7 +36,7 @@ jobs:
       env:
         GIT_NAME: reign12
         GIT_EMAIL: ${{ secrets.GIT_EMAIL }}
-        REPO: github.com/reign12/blog
+        REPO: github.com/reign12/reign12.github.io
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |
         git config --global user.name $GIT_NAME
