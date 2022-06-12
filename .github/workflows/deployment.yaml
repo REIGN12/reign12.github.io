@@ -24,6 +24,10 @@ jobs:
     - name: Install dependencies & Generate static files
       run: |
         node -v
+        npm uninstall hexo-renderer-marked --save
+        npm i hexo-renderer-pandoc --save
+        sudo -E apt-get -yqq install pandoc
+        npm i @upupming/hexo-renderer-markdown-it-plus --save
         npm i hexo-cli --location=global
         npm i
         hexo clean

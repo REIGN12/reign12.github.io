@@ -107,3 +107,10 @@ deploy:
 about:
   name: Jingcheng Hu
   intro: See you there
+
+# latex setting
+post:
+  math:
+    enable: true
+    specific: false
+    engine: mathjax
