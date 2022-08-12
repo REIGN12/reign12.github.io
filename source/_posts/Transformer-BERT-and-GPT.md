@@ -13,6 +13,11 @@ minimal example:
 <bos>, t -> t, <eos>
 a12 = 0
 ```
+The main idea is constructing $t_i$ 's repr based on $\{t_0,...,t_{i-1}\}$. 
+
+Adding \<eos\> in front to construct seq and appending \<bos\> at tail to construct label(essentially a shifting trick), 
+also equiqqed with CausalAttention(essentially a triu mask),
+we can self-supvervise a whole text in a single path in teacher's force fashion(and multiple texts in a batch fashion).
 ```python
 class Dataset:
     def __getitem__(self,text:List):
