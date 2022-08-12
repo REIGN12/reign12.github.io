@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>Transformer, BERT, and GPT</title>
+    <link href="/2022/08/12/Transformer-BERT-and-GPT/"/>
+    <url>/2022/08/12/Transformer-BERT-and-GPT/</url>
+    
+    <content type="html"><![CDATA[<h1 id="gentle-introduction-to-transformer-bert-and-gpt">Gentle Introduction to Transformer, BERT and GPT</h1><h2 id="gpt">GPT</h2><p>minimal example: <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">&lt;bos&gt;, t -&gt; t, &lt;eos&gt;<br>a12 = <span class="hljs-number">0</span><br></code></pre></td></tr></table></figure> The main idea is constructing <span class="math inline">\(t_i\)</span> 's repr based on <span class="math inline">\(\{t_0,...,t_{i-1}\}\)</span>.</p><p>Adding &lt;eos&gt; in front to construct seq and appending &lt;bos&gt; at tail to construct label(essentially a shifting trick), also equiqqed with CausalAttention(essentially a triu mask), we can self-supvervise a whole text in a single path in teacher's force fashion(and multiple texts in a batch fashion). <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Dataset</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__getitem__</span>(<span class="hljs-params">self,text:<span class="hljs-type">List</span></span>):<br>        seq = [&lt;bos&gt;] + text<br>        label = text + [&lt;eos&gt;]<br>        <span class="hljs-keyword">return</span> seq, label<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">CausalAttention</span>(nn.Module):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self,x:Tensor</span>):<br>        B,TL,D = x.shape<br>        mask = torch.tril(torch.ones(TL,TL)) <span class="hljs-comment"># rm a_&#123;ij&#125;, j&gt;i &#x27;s connection</span><br><br><br><br><br><br></code></pre></td></tr></table></figure></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Basic Concepts</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>How to Estimate GPU Memory Allocated?</title>
+    <link href="/2022/08/12/How-to-Estimate-GPU-Memory-Allocated/"/>
+    <url>/2022/08/12/How-to-Estimate-GPU-Memory-Allocated/</url>
+    
+    <content type="html"><![CDATA[<h1 id="how-to-estimate-gpu-memory-allocated">How to Estimate GPU Memory Allocated?</h1><p>This article wants to answer a centeral question in DL experiments: Given model architecture, optimizer, batch size, GPU type, how to estimate the GPU memory usage?</p><p>use model arch, get number of parameters and activations. use optimizer and GPU type, get number of value need to store for each param, and data type for each value</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Experimental Skills</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Awk Tutorial</title>
+    <link href="/2022/08/11/Awk-Tutorial/"/>
+    <url>/2022/08/11/Awk-Tutorial/</url>
+    
+    <content type="html"><![CDATA[<h1 id="gentle-introduction-to-awk-and-beyond">Gentle Introduction to Awk and Beyond</h1><p>Better experiments management calls for better data processing tools, especially those handy to deal with tabular data and logs. During the trip to HZ, I rummaged in my downloaded books and came across <em>The AWK Programming Language</em>, which just fitted in the slot. What is more, <a href="https://github.com/wuzhouhui/awk">The AWK Programming Language 中文翻译项目</a> remove the barrier of language. Hopefully, this little tutorial would work as a starting point of my blog, a handy awk cheat sheet for day-to-day usage and a nice practice for writing.</p><p><em>The AWK Programming Language</em> is not just about awk; the crucial concepts and ideas are just expressed in awk.</p><h2 id="basic-concepts-and-one-liner-examples">Basic Concepts and One-Liner Examples</h2><h3 id="gentle-introduction-to-regular-expression">Gentle Introduction to Regular Expression</h3>]]></content>
+    
+    
+    <categories>
+      
+      <category>Productive Tools</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  
+</search>
