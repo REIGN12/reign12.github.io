@@ -40,9 +40,9 @@ Specifically, the discount factor $\gamma$ controls the effective sequence lengt
 On the other hand, the GAE parameter $\lambda$ balances bias and variance in advantage estimation. Crucially, in large-scale training scenarios, the substantial data volume naturally mitigates variance concerns, encouraging us to adopt a bias-free configuration.
 Consequently, by setting $\gamma=1$ and $\lambda=1$, we fully capture the long-term dependencies critical for reasoning tasks and achieve stable training.
 Fortuitously, this also leads to a significant simplification of the GAE advantage computation in our case:   
-$$ 
-\hat{A}\_t^{GAE(\gamma=1, \lambda=1)} = R - V\_\phi(s_t), \\\\
-\mathcal{J}\_{\text{value}}(\phi) = \frac{1}{2}\mathbb{E}\_{\tau \sim \pi\_{\theta\_{\text{old}}}} \left[ \sum\_{t=0}^{T-1} (V\_\phi(s\_t) - R)^2 \right], 
+$$
+\hat{A}_t^{GAE(\gamma=1, \lambda=1)} = R - V_\phi(s_t), \\
+\mathcal{J}_{\text{value}}(\phi) = \frac{1}{2}\mathbb{E}_{\tau \sim \pi_{\theta_{\text{old}}}} \left[ \sum_{t=0}^{T-1} (V_\phi(s_t) - R)^2 \right], 
 $$
 where $R$ is the single terminal reward. 
 
