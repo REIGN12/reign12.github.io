@@ -38,14 +38,15 @@ Through extensive experiments, we found that the choice of GAE parameters substa
 Specifically, the discount factor $\gamma$ controls the effective sequence length considered during training: a lower $\gamma$ assigns exponentially decreasing weights to future rewards, inducing the model to prematurely terminate generation in order to more immediately obtain rewards.
 On the other hand, the GAE parameter $\lambda$ balances bias and variance in advantage estimation. Crucially, in large-scale training scenarios, the substantial data volume naturally mitigates variance concerns, encouraging us to adopt a bias-free configuration.
 Consequently, by setting $\gamma=1$ and $\lambda=1$, we fully capture the long-term dependencies critical for reasoning tasks and achieve stable training.
-Fortuitously, this also leads to a significant simplification of the GAE advantage computation in our case: 
-$$
-\hat{A}_t^{GAE(\gamma=1, \lambda=1)} = R - V_\phi(s_t), 
-$$
-$$
-\mathcal{J}_{\text{value}}(\phi) = \frac{1}{2}\mathbb{E}_{\tau \sim \pi_{\theta_{\text{old}}}} \left[ \sum_{t=0}^{T-1} (V_\phi(s_t) - R)^2 \right],
+Fortuitously, this also leads to a significant simplification of the GAE advantage computation in our case:   
+$$ 
+\begin{align}
+\hat{A}\_t^{GAE(\gamma=1, \lambda=1)} = R - V\_\phi(s_t), \\\\
+\mathcal{J}\_{\text{value}}(\phi) = \frac{1}{2}\mathbb{E}\_{\tau \sim \pi\_{\theta\_{\text{old}}}} \left[ \sum\_{t=0}^{T-1} (V\_\phi(s\_t) - R)^2 \right], 
+\end{align}
 $$
 where $R$ is the single terminal reward. 
+
 
 ### Removing KL regularization
 We achieve stable training without relying on any KL-based regularization techniques (\eg, KL shaped rewards and loss), different from the de facto RLHF community and Reasoner model. 
@@ -60,8 +61,6 @@ Notably, even unaligned base models quickly adpot to desired format, suggesting 
 ### Scale up Training Data.
 We identify that scaling up data quantity and diversity is pivotal for Reasoner-Zero training. While training on limited academic datasets like MATH train set leads to quick performance plateaus, our curated large-scale diverse dataset demonstrates impressive potential for continuous improvement without signs of saturation on both training and test sets.
 
-
-## Experiments
 
 
 ## Use ORZ Models
