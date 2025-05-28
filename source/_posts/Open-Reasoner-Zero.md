@@ -40,7 +40,9 @@ On the other hand, the GAE parameter $\lambda$ balances bias and variance in adv
 Consequently, by setting $\gamma=1$ and $\lambda=1$, we fully capture the long-term dependencies critical for reasoning tasks and achieve stable training.
 Fortuitously, this also leads to a significant simplification of the GAE advantage computation in our case: 
 $$
-\hat{A}_t^{GAE(\gamma=1, \lambda=1)} = R - V_\phi(s_t), \\
+\hat{A}_t^{GAE(\gamma=1, \lambda=1)} = R - V_\phi(s_t), 
+$$
+$$
 \mathcal{J}_{\text{value}}(\phi) = \frac{1}{2}\mathbb{E}_{\tau \sim \pi_{\theta_{\text{old}}}} \left[ \sum_{t=0}^{T-1} (V_\phi(s_t) - R)^2 \right],
 $$
 where $R$ is the single terminal reward. 
